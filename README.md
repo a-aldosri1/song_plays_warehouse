@@ -20,15 +20,15 @@ We choose `song_id` to be the distribution key, because we assume that it is the
 
 ### How to run
 There is multiple prerequisites to run the ETL which is:
-1-	Create an aws account 
-2-	Create an IAM user 
-3-	Retrieve the access keys.
-4-	Create an IAM role and attach `AmazonS3ReadOnlyAccess` policy to it
-5-	Create a redshift cluster with the previous IAM role, preferred ` dc2.large` with 4 nodes.
-6-	Retrieve the IAM role arn, and the cluster endpoint.
-7-	Store the access keys, IAM role arn, and the cluster endpoint in `dwh.cfg` file
-8-	Install python 3.6
-9-	Create a python virtual environment and install the pachages in ` requirements.txt` with the following command ` pip install -r requirements.txt`
+1. Create an aws account 
+2. Create an IAM user 
+3. Retrieve the access keys.
+4. Create an IAM role and attach `AmazonS3ReadOnlyAccess` policy to it
+5. Create a redshift cluster with the previous IAM role, preferred ` dc2.large` with 4 nodes.
+6. Retrieve the IAM role arn, and the cluster endpoint.
+7. Store the access keys, IAM role arn, and the cluster endpoint in `dwh.cfg` file
+8. Install python 3.6
+9. Create a python virtual environment and install the pachages in ` requirements.txt` with the following command ` pip install -r requirements.txt`
 
 Now you are ready to run the ETL, run ` create_tables` to create the tables or dropping them and recreating them.
 
