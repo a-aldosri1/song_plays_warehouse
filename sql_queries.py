@@ -87,7 +87,9 @@ CREATE TABLE users_dim (
     "user_id" bigint not NULL sortkey,
     "first_name" varchar(40) NOT NULL,
     "last_name" varchar(40) NOT NULL,
-    "gender" char(1) NOT NULL
+    "gender" char(1) NOT NULL,
+    "level" varchar(10) NULL
+
    
 )
 
@@ -196,17 +198,31 @@ insert into users_dim (
 user_id,
 first_name,
 last_name,
-gender
+gender,
+level
 )
+
+with users_cts as (
 
 select distinct 
 userId as user_id,
 firstname as first_name,
 lastname as last_name,
-gender
+gender,
+level,
+row_number() over(partition by userId order by ts desc) as row_order
 from staging_events as e
 where userId is not null 
+)
 
+
+select user_id,
+    first_name,
+    last_name,
+    gender,
+    level
+from users_cts
+where row_order = 1
 
 """)
 
