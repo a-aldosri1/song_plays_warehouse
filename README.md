@@ -12,7 +12,7 @@ We build an ETL to extract the two datasets
 
 into staging tables at redshift using the copy command in redshift to read from s3 bucket, then we transformed the staging tables into the following star schema:
 
-![song plays schema](https://github.com/a-aldosri1/song_plays_warehouse/main/Song Plays Star schema.jpeg)
+![song plays schema](/Song_Plays_Star_schema.jpeg)
 
 as you can see we divided the tables into one fact table: `song_plays_fact`, and 4 dimension tables: `time_dim`, `users_dim`, `artists_dim`, and `songs_dim`.
 We choose `song_id` to be the distribution key, because we assume that it is the most column we will aggregate on and order by.
