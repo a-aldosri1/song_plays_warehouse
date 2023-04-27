@@ -1,15 +1,21 @@
+''' This script drop tables and recreate them using drop_table_queries, create_table_queries defined in sql_queries.py
+'''
 import configparser
 import psycopg2
 from sql_queries import create_table_queries, drop_table_queries
 
 
 def drop_tables(cur, conn):
+    ''' Takes cusrsor and connection, drop all tables in drop_table_queries from sql_queries.py
+    '''
     for query in drop_table_queries:
         cur.execute(query)
         conn.commit()
 
 
 def create_tables(cur, conn):
+    ''' Takes cusrsor and connection, create all tables defined in create_table_queries from sql_queries.py
+    '''
     for query in create_table_queries:
         cur.execute(query)
         conn.commit()

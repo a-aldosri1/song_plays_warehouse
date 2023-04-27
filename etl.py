@@ -4,6 +4,8 @@ from time import time
 from sql_queries import copy_table_queries, insert_table_queries
 
 def load_staging_tables(cur, conn):
+    ''' Takes cusrsor and connection, load staging tables from s3 to redshift using copy_table_queries from sql_queries.py
+    '''
     for query in copy_table_queries:
 
 
@@ -20,7 +22,8 @@ def load_staging_tables(cur, conn):
 
 
 def insert_tables(cur, conn):
-    
+    ''' Takes cusrsor and connection, transform staging tables to fact and dimention tables using insert_table_queries from sql_queries.py
+    '''
     for query in insert_table_queries:
         print("======= Inserting TABLE:  =======")
         print(query)
